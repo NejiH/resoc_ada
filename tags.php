@@ -42,7 +42,7 @@
         /**
          * Etape 2: se connecter à la base de donnée
          */
-        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
+        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
         ?>
 
         <aside>
@@ -97,7 +97,7 @@
              */
             while ($post = $lesInformations->fetch_assoc()) {
 
-                echo "<pre>" . print_r($post, 1) . "</pre>";
+                //echo "<pre>" . print_r($post, 1) . "</pre>";
                 ?>
                 <article>
                     <h3>
