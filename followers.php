@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <title>ReSoC - Mes abonnés</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+        <img src="resoc.jpg" alt="Logo de notre réseau social" />
         <nav id="menu">
             <a href="news.php">Actualités</a>
             <a href="wall.php?user_id=5">Mur</a>
@@ -24,10 +26,10 @@
             </ul>
         </nav>
     </header>
-    
+
     <div id="wrapper">
         <aside>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez la liste des personnes qui suivent les messages de l'utilisatrice
@@ -35,7 +37,7 @@
                 </p>
             </section>
         </aside>
-        
+
         <main class='contacts'>
             <?php
             // step 1: get user ID
@@ -65,7 +67,7 @@
                 while ($follower = $result->fetch_assoc()) {
                     ?>
                     <article>
-                        <img src="user.jpg" alt="Portrait de l'utilisateur"/>
+                        <img src="user.jpg" alt="Portrait de l'utilisateur" />
                         <h3><?php echo $follower['alias']; ?></h3>
                         <p>ID: <?php echo $follower['id']; ?></p>
                     </article>
@@ -81,4 +83,5 @@
         </main>
     </div>
 </body>
+
 </html>
