@@ -9,24 +9,7 @@
 </head>
 
 <body>
-    <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social" />
-        <nav id="menu">
-            <a href="news.php">Actualités</a>
-            <a href="wall.php?user_id=5">Mur</a>
-            <a href="feed.php?user_id=5">Flux</a>
-            <a href="tags.php?tag_id=1">Mots-clés</a>
-        </nav>
-        <nav id="user">
-            <a href="#">Profil</a>
-            <ul>
-                <li><a href="settings.php?user_id=5">Paramètres</a></li>
-                <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
-                <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
-            </ul>
-
-        </nav>
-    </header>
+<?php include 'header.php'; ?>
     <div id="wrapper">
         <?php
         /**
@@ -37,13 +20,13 @@
         /**
          * Etape 1: Le mur concerne un utilisateur en particulier
          */
-        $userId = intval($_GET['user_id']);
+        include 'user_id.php';
         ?>
         <?php
         /**
          * Etape 2: se connecter à la base de donnée
          */
-        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+        include 'connect.php';
         ?>
 
         <aside>
@@ -88,34 +71,15 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC  
                     ";
-            $lesInformations = $mysqli->query($laQuestionEnSql);
-            if (!$lesInformations) {
-                echo ("Échec de la requete : " . $mysqli->error);
-            }
-
+                    
+            include 'utilitaires.php';      
+         
             /**
              * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
              * A vous de retrouver comment faire la boucle while de parcours...
              */
-            while ($post = $lesInformations->fetch_assoc()) {
-
-                ?>
-                <article>
-                    <h3>
-                        <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?> </time>
-                    </h3>
-                    <address>par <?php echo $user['alias'] ?></address>
-                    <div>
-                        <p><?php echo $post['content'] ?></p>
-                    </div>
-                    <footer>
-                        <small>♥ <?php echo $post['like_number'] ?></small>
-                        <a href="">#<?php echo str_replace(',', ', #', $post['taglist']) ?></a>
-                    </footer>
-                </article>
-                <?php
-                // et de pas oublier de fermer ici vote while
-            }
+            
+            include 'article.php';
             ?>
 
 
