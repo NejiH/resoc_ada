@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social" />
+        <img src="assets/resoc.jpg" alt="Logo de notre réseau social" />
         <nav id="menu">
             <a href="news.php">Actualités</a>
             <a href="wall.php?user_id=5">Mur</a>
@@ -56,7 +56,7 @@
             //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
             // echo "<pre>" . print_r($tag, 1) . "</pre>";
             ?>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
+            <img src="assets/user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez les derniers messages comportant

@@ -1,7 +1,7 @@
 <?php
 ?>
 <header>
-    <a href='admin.php'><img src="resoc.jpg" alt="Logo de notre réseau social" /></a>
+    <a href='admin.php'><img src="assets/resoc.jpg" alt="Logo de notre réseau social" /></a>
     <nav id="menu">
         <a href="news.php">Actualités</a>
         <a href="wall.php?user_id=5">Mur</a>
