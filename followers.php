@@ -37,19 +37,12 @@
                 </p>
             </section>
         </aside>
-
         <main class='contacts'>
             <?php
+            include 'connect.php';
+
             // step 1: get user ID
             $userId = $_GET['user_id'];
-
-            // step 2: connect to database
-            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
-
-            // check connection 
-            if ($mysqli->connect_error) {
-                die("Erreur de connexion: " . $mysqli->connect_error);
-            }
 
             // step 3: write query 
             $query = "

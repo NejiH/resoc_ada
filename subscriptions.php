@@ -39,11 +39,10 @@
         
         <main class='contacts'>
             <?php
-            // step 1: get  user ID
-            $userId = $_GET['user_id'];
+            include 'connect.php';
 
-            // step 2: connect to  database
-            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+            // step 1: get user ID
+            $userId = $_GET['user_id'];
 
             // check connection 
             if ($mysqli->connect_error) {
