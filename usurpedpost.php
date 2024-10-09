@@ -13,7 +13,10 @@ session_start();
 
 <body>
     <header>
-        <img src="assets/resoc.jpg" alt="Logo de notre réseau social" />
+        <<<<<<< HEAD <img src="assets/resoc.jpg" alt="Logo de notre réseau social" />
+        =======
+        <img src="resoc.jpg" alt="Logo de notre réseau social" />
+        >>>>>>> 13d51cf (add: lien vers user profile)
         <nav id="menu">
             <a href="news.php">Actualités</a>
             <a href="wall.php?user_id=5">Mur</a>
@@ -45,7 +48,7 @@ session_start();
                 /**
                  * BD
                  */
-                $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
+                $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
                 /**
                  * Récupération de la liste des auteurs
                  */

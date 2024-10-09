@@ -1,5 +1,3 @@
-<?php
-?>
 <header>
     <a href='admin.php'><img src="assets/resoc.jpg" alt="Logo de notre réseau social" /></a>
     <nav id="menu">
@@ -17,5 +15,3 @@
         </ul>
     </nav>
 </header>
-<?php
-?>

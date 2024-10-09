@@ -42,7 +42,7 @@
         /**
          * Etape 2: se connecter à la base de donnée
          */
-        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
         if ($mysqli->connect_errno) {
             echo ("Échec de la connexion : " . $mysqli->connect_error);
             exit();
@@ -75,7 +75,8 @@
              */
             $laQuestionEnSql = "
                     SELECT posts.content, 
-                    posts.created, 
+                    posts.created,
+                    posts.user_id, 
                     users.alias as author_name, 
                     COUNT(likes.id) as like_number, 
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
@@ -104,7 +105,9 @@
                     <h3>
                         <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?></time>
                     </h3>
-                    <address>par <?php echo $user['alias'] ?></address>
+                    <address>par <a
+                            href="http://localhost:8888/resoc_n1/wall.php?user_id=<?php echo $post['user_id'] ?>"><?php echo $user['alias'] ?></a>
+                    </address>
                     <div>
                         <p><?php echo $post['content'] ?></p>
                     </div>

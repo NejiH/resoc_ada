@@ -1,5 +1,6 @@
 <?php
 
+
 // Boucle while pour création d'article
 global $lesInformations;
 while ($post = $lesInformations->fetch_assoc()) {
@@ -8,7 +9,9 @@ while ($post = $lesInformations->fetch_assoc()) {
         <h3>
             <time><?php echo $post['created'] ?></time>
         </h3>
-        <address><?php echo $post['author_name'] ?></address>
+        <address><a
+                href="http://localhost:8888/resoc_n1/wall.php?user_id=<?php echo $post['user_id'] ?>"><?php echo $post['author_name'] ?></a>
+        </address>
         <div>
             <p><?php echo $post['content'] ?></p>
         </div>
