@@ -15,7 +15,6 @@
     include 'connect.php';
     include 'user_id.php';
 
-
     $sqlTag = "SELECT * FROM tags WHERE id='$tagId'";
     $resultTag = $mysqli->query($sqlTag);
     $tag = $resultTag->fetch_assoc();
@@ -51,8 +50,8 @@
             ";
             $resultPosts = $mysqli->query($sqlPosts);
 
-
-            while ($post = $resultPosts->fetch_assoc()) {
+          // Display posts
+           while ($post = $resultPosts->fetch_assoc()) {
                 ?>
                 <article>
                     <h3>

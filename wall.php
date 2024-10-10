@@ -32,10 +32,20 @@
 
         <main>
 
+         <!-- formulaire en cours -->
             <form method="POST" action="wall.php">
-                <textarea name="message" placeholder="Message..." required></textarea>
+                <textarea name="messageWall" placeholder="Message..." required></textarea>
                 <button type="submit">Poste ton message</button>
             </form>
+
+            <?php
+
+            if (isset($_POST['messageWall']))
+            {
+                echo $_POST['messageWall'];
+            }
+            // INSERT INTO `posts` (`id`, `user_id`, `content`, `created`, `parent_id`) VALUES ('357', '1', 'Hello world', '2024-10-10 15:24:44.000000', NULL);
+            ?>
 
             <?php
 
@@ -53,7 +63,7 @@
             ";
             $resultPosts = $mysqli->query($sqlPosts);
 
-            // Display posts
+             // Display posts
             while ($post = $resultPosts->fetch_assoc()) {
                 ?>
                 <article>

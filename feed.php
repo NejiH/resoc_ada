@@ -49,8 +49,8 @@
             ";
             $resultPosts = $mysqli->query($sqlPosts);
 
-            // display posts
-            while ($post = $resultPosts->fetch_assoc()) {
+               // display posts
+            while ($post = $lesInformations->fetch_assoc()) {
                 ?>
                 <article>
                     <h3>

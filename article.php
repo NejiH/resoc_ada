@@ -2,7 +2,7 @@
 // Boucle while pour création d'article
 global $lesInformations;
 while ($post = $lesInformations->fetch_assoc()) {
-    ?>
+?>
     <article>
         <h3>
             <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?></time>
@@ -18,5 +18,5 @@ while ($post = $lesInformations->fetch_assoc()) {
             <a href="">#<?php echo str_replace(',', ', #', $post['taglist']) ?></a>
         </footer>
     </article>
-    <?php
+<?php
 }

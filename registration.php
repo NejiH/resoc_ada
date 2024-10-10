@@ -55,7 +55,6 @@
                 }
                 ?>
 
-
                 <form action="registration.php" method="post">
                     <dl>
                         <dt><label for='pseudo'>Pseudo</label></dt>
