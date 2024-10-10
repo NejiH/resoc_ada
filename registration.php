@@ -70,11 +70,16 @@
 
                     <dl>
                         <dt><label for='pseudo'>Pseudo</label></dt>
-                        <dd><input type='text' name='pseudo'></dd>
+                        <dd><input type='text' id='pseudo' name='pseudo' aria-describedby='pseudoHelp'></dd>
+                        <dd><small id="pseudoHelp">Texte ici.</small></dd>
+
                         <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' name='email'></dd>
-                        <dt><label for='motpasse'>Mot de passe</label></dt>
-                        <dd><input type='password' name='motpasse'></dd>
+                        <dd><input type='email' id='email' name='email' aria-describedby='emailHelp'></dd>
+                        <dd><small id="pseudoHelp">Texte ici.</small></dd>
+
+                        <dt><label for='motdepasse'>Mot de passe</label></dt>
+                        <dd><input type='password' id='motdepasse' name='motdepasse' aria-describedby='passwordHelp'></dd>
+                        <dd><small id='passwordHelp'>Texte ici.</small></dd>
                     </dl>
                     <input type='submit'>
                 </form>
