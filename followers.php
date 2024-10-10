@@ -45,8 +45,10 @@
                     ?>
                     <article>
                         <img src="assets/user.jpg" alt="Portrait de l'utilisateur" />
-                        <h3><?php echo $follower['alias']; ?></h3><a
-                            href="http://localhost:8888/resoc_n1/wall.php?user_id=<?php echo $follower['id'] ?>"><?php echo $follower['alias']; ?></a>
+                        <a href="wall.php?user_id=<?php echo $follower['id']; ?>">
+                            <?php echo $follower['alias']; ?>
+                        </a>
+
                         </h3>
                         <p>ID: <?php echo $follower['id']; ?></p>
                     </article>
