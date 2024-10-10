@@ -40,7 +40,7 @@
             //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
             //echo "<pre>" . print_r($user, 1) . "</pre>";
             ?>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
+            <img src="assets/user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez tous les message des utilisatrices
@@ -78,7 +78,7 @@
              * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
              * A vous de retrouver comment faire la boucle while de parcours...
              */
-            
+
             include 'article.php';
             ?>
 

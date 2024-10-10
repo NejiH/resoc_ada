@@ -15,7 +15,7 @@
     ?>
     <div id="wrapper">
         <aside>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
+            <img src="assets/user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez les derniers messages de
@@ -28,6 +28,7 @@
             $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
+                    posts.user_id,
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
