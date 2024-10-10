@@ -33,7 +33,7 @@
         <main>
             <?php
             // fetch posts
-            $sqlPosts = "
+            $laQuestionEnSql = "
                 SELECT posts.content, posts.created, users.alias as author_name,  
                 COUNT(likes.id) as like_number,  
                 GROUP_CONCAT(DISTINCT tags.label) AS taglist
@@ -47,9 +47,9 @@
                 GROUP BY posts.id
                 ORDER BY posts.created DESC
             ";
-            $resultPosts = $mysqli->query($sqlPosts);
+            $lesInformations = $mysqli->query($laQuestionEnSql);
 
-               // display posts
+            // display posts
             while ($post = $lesInformations->fetch_assoc()) {
                 ?>
                 <article>
