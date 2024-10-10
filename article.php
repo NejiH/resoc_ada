@@ -1,6 +1,4 @@
 <?php
-
-
 // Boucle while pour création d'article
 global $lesInformations;
 while ($post = $lesInformations->fetch_assoc()) {

@@ -60,15 +60,13 @@
                     <dl>
                         <dt><label for='pseudo'>Pseudo</label></dt>
                         <dd><input type='text' id='pseudo' name='pseudo' aria-describedby='pseudoHelp' required></dd>
-                        <dd><small id="pseudoHelp">Texte ici.</small></dd>
-
+                        <dd><small id="pseudoHelp">*veuillez entrer votre pseudo ici.</small></dd>
                         <dt><label for='email'>E-Mail</label></dt>
                         <dd><input type='email' id='email' name='email' aria-describedby='emailHelp' required></dd>
-                        <dd><small id="pseudoHelp">Texte ici.</small></dd>
-
+                        <dd><small id="pseudoHelp">*veuillez entrer votre adresse e-mail ici.</small></dd>
                         <dt><label for='motdepasse'>Mot de passe</label></dt>
                         <dd><input type='password' id='motdepasse' name='motdepasse' aria-describedby='passwordHelp' required></dd>
-                        <dd><small id='passwordHelp'>Texte ici.</small></dd>
+                        <dd><small id='passwordHelp'>*veuillez entrer votre mot de passe ici.</small></dd>
                     </dl>
                     <input type="submit" value="S'inscrire">
                 </form>

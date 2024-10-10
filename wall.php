@@ -12,9 +12,7 @@
 
     include 'header.php';
     include 'connect.php';
-
-    $userId = intval($_GET['user_id']);
-
+    include 'user_id.php';
 
     $sqlUser = "SELECT * FROM users WHERE id='$userId'";
     $resultUser = $mysqli->query($sqlUser);
@@ -33,6 +31,12 @@
         </aside>
 
         <main>
+
+            <form method="POST" action="wall.php">
+                <textarea name="message" placeholder="Message..." required></textarea>
+                <button type="submit">Poste ton message</button>
+            </form>
+
             <?php
 
             $sqlPosts = "

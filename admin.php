@@ -53,9 +53,7 @@
             while ($user = $lesUtilisatrices->fetch_assoc()) {
                 ?>
                 <article>
-                    <h3><a
-                            href="http://localhost:8888/resoc_n1/wall.php?user_id=<?php echo $user['id'] ?>"><?php echo $user['alias']; ?></a>
-                    </h3>
+                <h3><a href="wall.php?user_id=<?php echo $user['id']; ?>"><?php echo $user['alias']; ?></a></h3>
                     <nav>
                         <a href="wall.php?user_id=<?php echo $user['id']; ?>">Mur</a>
                         | <a href="feed.php?user_id=<?php echo $user['id']; ?>">Flux</a>

@@ -13,8 +13,7 @@
 
     include 'header.php';
     include 'connect.php';
-
-    $tagId = intval($_GET['tag_id']);
+    include 'user_id.php';
 
 
     $sqlTag = "SELECT * FROM tags WHERE id='$tagId'";
