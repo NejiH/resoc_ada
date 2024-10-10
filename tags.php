@@ -17,6 +17,12 @@
         <?php
         $tagId = intval($_GET['tag_id']);
         ?>
+        <?php
+        /**
+         * Etape 2: se connecter à la base de donnée
+         */
+        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
+        ?>
 
         <aside>
             <?php
@@ -53,12 +59,33 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC  
                     ";
+            $lesInformations = $mysqli->query($laQuestionEnSql);
+            if (!$lesInformations) {
+                echo ("Échec de la requete : " . $mysqli->error);
+            }
 
-           include 'utilitaires.php';
+            /**
+             * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
+             */
+            while ($post = $lesInformations->fetch_assoc()) {
 
-           include 'article.php';
-           
-           ?>
+                //echo "<pre>" . print_r($post, 1) . "</pre>";
+                ?>
+                <article>
+                    <h3>
+                        <time datetime='2020-02-01 11:12:13'><?php echo $post['created'] ?></time>
+                    </h3>
+                    <address>par <?php echo $post['author_name'] ?></address>
+                    <div>
+                        <p><?php echo $post['content'] ?></p>
+                    </div>
+                    <footer>
+                        <small>♥ <?php echo $post['like_number'] ?></small>
+                        <a href="">#<?php echo str_replace(',', ', #', $post['taglist']) ?></a>
+                    </footer>
+                </article>
+            <?php } ?>
+
 
         </main>
     </div>
