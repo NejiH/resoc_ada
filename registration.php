@@ -58,12 +58,17 @@
 
                 <form action="registration.php" method="post">
                     <dl>
-                        <dt><label for="pseudo">Pseudo</label></dt>
-                        <dd><input type="text" name="pseudo" required></dd>
-                        <dt><label for="email">E-Mail</label></dt>
-                        <dd><input type="email" name="email" required></dd>
-                        <dt><label for="motpasse">Mot de passe</label></dt>
-                        <dd><input type="password" name="motpasse" required></dd>
+                        <dt><label for='pseudo'>Pseudo</label></dt>
+                        <dd><input type='text' id='pseudo' name='pseudo' aria-describedby='pseudoHelp' required></dd>
+                        <dd><small id="pseudoHelp">Texte ici.</small></dd>
+
+                        <dt><label for='email'>E-Mail</label></dt>
+                        <dd><input type='email' id='email' name='email' aria-describedby='emailHelp' required></dd>
+                        <dd><small id="pseudoHelp">Texte ici.</small></dd>
+
+                        <dt><label for='motdepasse'>Mot de passe</label></dt>
+                        <dd><input type='password' id='motdepasse' name='motdepasse' aria-describedby='passwordHelp' required></dd>
+                        <dd><small id='passwordHelp'>Texte ici.</small></dd>
                     </dl>
                     <input type="submit" value="S'inscrire">
                 </form>
