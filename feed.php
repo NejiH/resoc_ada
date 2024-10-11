@@ -4,15 +4,18 @@
 <head>
     <meta charset="utf-8">
     <title>ReSoC - Flux</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <link rel="stylesheet">
+
 </head>
 
 <body>
     <?php
+    include 'includes/header.php';
+    include 'database/connect.php';
 
-    include 'header.php';
-    include 'connect.php';
-    include 'user_id.php';
+    $userId = intval($_GET['user_id']);
 
     $sqlUser = "SELECT * FROM `users` WHERE id='$userId'";
     $resultUser = $mysqli->query($sqlUser);
@@ -34,7 +37,7 @@
             <?php
             // fetch posts
             $laQuestionEnSql = "
-                SELECT posts.content, posts.created, users.alias as author_name,  
+                SELECT posts.id as post_id, posts.content, posts.created, users.alias as author_name,  
                 COUNT(likes.id) as like_number,  
                 GROUP_CONCAT(DISTINCT tags.label) AS taglist
                 FROM followers 
@@ -61,8 +64,16 @@
                         <p><?php echo $post['content']; ?></p>
                     </div>
                     <footer>
-                        <small>♥ <?php echo $post['like_number']; ?></small>
-                        <a href="#">#<?php echo str_replace(',', ', #', $post['taglist']); ?></a>
+                        <!-- formulaire pour ajouter un like  -->
+                        <form action="like.php" method="post" style="display:inline;">
+                            <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
+                            <button type="submit" class="like-button">
+                                ♥ <?php echo $post['like_number']; ?>
+                            </button>
+                        </form>
+
+                        <!-- afficher les tags -->
+                        <a href="#"><?php echo str_replace(',', ', #', $post['taglist']); ?></a>
                     </footer>
                 </article>
             <?php } ?>

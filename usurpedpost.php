@@ -8,12 +8,11 @@ session_start();
     <meta charset="utf-8">
     <title>ReSoC - Post d'usurpateur</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
-
+    <?php include 'includes/header.php'; ?>
 
     <div id="wrapper">
 
@@ -27,8 +26,10 @@ session_start();
                 <h2>Poster un message</h2>
                 <?php
 
-                include 'connect.php';
 
+                include 'database/connect.php';
+
+                // récup liste des auteurs
                 $listAuteurs = [];
                 $laQuestionEnSql = "SELECT * FROM users";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
@@ -36,61 +37,52 @@ session_start();
                     $listAuteurs[$user['id']] = $user['alias'];
                 }
 
+                // TRAITEMENT DU FORMULAIRE
+                if (isset($_POST['auteur'])) {
+                    //  données du formulaire
+                    $authorId = $_POST['auteur'];
+                    $postContent = $_POST['message'];
 
-                /**
-                 * TRAITEMENT DU FORMULAIRE
-                 */
-                // Etape 1 : vérifier si on est en train d'afficher ou de traiter le formulaire
-                // si on recoit un champs email rempli il y a une chance que ce soit un traitement
-                $enCoursDeTraitement = isset($_POST['auteur']);
-                if ($enCoursDeTraitement) {
-                    // on ne fait ce qui suit que si un formulaire a été soumis.
-                    // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
-                    // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
-                    echo "<pre>" . print_r($_POST, 1) . "</pre>";
-                    // et complétez le code ci dessous en remplaçant les ???
-                    $authorId = $_POST['???'];
-                    $postContent = $_POST['???'];
-
-
-                    //Etape 3 : Petite sécurité
-                    // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
+                    // securiser les données
                     $authorId = intval($mysqli->real_escape_string($authorId));
                     $postContent = $mysqli->real_escape_string($postContent);
-                    //Etape 4 : construction de la requete
-                    $lInstructionSql = "INSERT INTO posts "
-                        . "(id, user_id, content, created, permalink, post_id) "
-                        . "VALUES (NULL, "
-                        . $authorId . ", "
-                        . "'" . $postContent . "', "
-                        . "NOW(), "
-                        . "'', "
-                        . "NULL);"
-                    ;
-                    echo $lInstructionSql;
-                    // Etape 5 : execution
-                    $ok = $mysqli->query($lInstructionSql);
-                    if (!$ok) {
-                        echo "Impossible d'ajouter le message: " . $mysqli->error;
+
+                    // verif que message est pas vide
+                    if (!empty($postContent)) {
+
+                        $lInstructionSql = "INSERT INTO posts (id, user_id, content, created) 
+                                            VALUES (NULL, $authorId, '$postContent', NOW())";
+
+                        // execution requête
+                        if ($mysqli->query($lInstructionSql)) {
+                            echo "Message posté avec succès en tant que : " . $listAuteurs[$authorId];
+                        } else {
+                            echo "Impossible d'ajouter le message : " . $mysqli->error;
+                        }
                     } else {
-                        echo "Message posté en tant que :" . $listAuteurs[$authorId];
+                        echo "Le contenu du message ne peut pas être vide.";
                     }
                 }
                 ?>
+
+                <!-- formulaire pour poster message -->
                 <form action="usurpedpost.php" method="post">
-                    <input type='hidden' name='???' value='achanger'>
                     <dl>
                         <dt><label for='auteur'>Auteur</label></dt>
-                        <dd><select name='auteur'>
+                        <dd>
+                            <select name='auteur' id="auteur" required>
                                 <?php
-                                foreach ($listAuteurs as $id => $alias)
+                                foreach ($listAuteurs as $id => $alias) {
                                     echo "<option value='$id'>$alias</option>";
+                                }
                                 ?>
-                            </select></dd>
+                            </select>
+                        </dd>
+
                         <dt><label for='message'>Message</label></dt>
-                        <dd><textarea name='message'></textarea></dd>
+                        <dd><textarea name='message' id="message" required></textarea></dd>
                     </dl>
-                    <input type='submit'>
+                    <input type='submit' value="Poster le message">
                 </form>
             </article>
         </main>

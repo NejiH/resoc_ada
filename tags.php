@@ -5,15 +5,17 @@
     <meta charset="utf-8">
     <title>ReSoC - Les messages par mot-clé</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
     <?php
 
-    include 'header.php';
-    include 'connect.php';
-    include 'user_id.php';
+    include 'includes/header.php';
+    include 'database/connect.php';
+
+    $tagId = intval($_GET['tag_id']);
+
 
     $sqlTag = "SELECT * FROM tags WHERE id='$tagId'";
     $resultTag = $mysqli->query($sqlTag);
@@ -34,7 +36,7 @@
         <main>
             <?php
 
-            $sqlPosts = "
+            $laQuestionEnSql = "
                 SELECT posts.content, posts.created, users.alias as author_name,  
                 COUNT(likes.id) as like_number,  
                 GROUP_CONCAT(DISTINCT tags.label) AS taglist
@@ -48,10 +50,10 @@
                 GROUP BY posts.id
                 ORDER BY posts.created DESC
             ";
-            $resultPosts = $mysqli->query($sqlPosts);
+            $lesInformations = $mysqli->query($laQuestionEnSql);
 
-          // Display posts
-           while ($post = $resultPosts->fetch_assoc()) {
+            // Display posts
+            while ($post = $resultPosts->fetch_assoc()) {
                 ?>
                 <article>
                     <h3>

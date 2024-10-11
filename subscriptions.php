@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <title>ReSoC - Mes abonnements</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'includes/header.php'; ?>
 
     <div id="wrapper">
         <aside>
@@ -25,7 +25,7 @@
 
         <main class='contacts'>
             <?php
-            include 'connect.php';
+            include 'database/connect.php';
 
             // step 1: get user ID
             $userId = $_GET['user_id'];

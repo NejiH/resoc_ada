@@ -4,15 +4,20 @@
 <head>
     <meta charset="utf-8">
     <title>ReSoC - Mur</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <link rel="stylesheet">
 </head>
 
 <body>
     <?php
 
-    include 'header.php';
-    include 'connect.php';
-    include 'user_id.php';
+    include 'includes/header.php';
+    include 'database/connect.php';
+
+
+    $userId = intval($_GET['user_id']);
+
 
     $sqlUser = "SELECT * FROM users WHERE id='$userId'";
     $resultUser = $mysqli->query($sqlUser);
@@ -21,6 +26,7 @@
 
     <div id="wrapper">
         <aside>
+
             <img src="assets/user.jpg" alt="Portrait de l'utilisateur" />
             <section>
                 <h3>Présentation</h3>
@@ -32,7 +38,7 @@
 
         <main>
 
-         <!-- formulaire en cours -->
+            <!-- formulaire en cours -->
             <form method="POST" action="wall.php">
                 <textarea name="messageWall" placeholder="Message..." required></textarea>
                 <button type="submit">Poste ton message</button>
@@ -40,8 +46,7 @@
 
             <?php
 
-            if (isset($_POST['messageWall']))
-            {
+            if (isset($_POST['messageWall'])) {
                 echo $_POST['messageWall'];
             }
             // INSERT INTO `posts` (`id`, `user_id`, `content`, `created`, `parent_id`) VALUES ('357', '1', 'Hello world', '2024-10-10 15:24:44.000000', NULL);
@@ -49,8 +54,8 @@
 
             <?php
 
-            $sqlPosts = "
-                SELECT posts.content, posts.created, posts.user_id, users.alias as author_name, 
+            $laQuestionEnSql = "
+                SELECT posts.id as post_id, posts.content, posts.created, posts.user_id, users.alias as author_name, 
                 COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist
                 FROM posts
                 JOIN users ON users.id = posts.user_id
@@ -61,9 +66,10 @@
                 GROUP BY posts.id
                 ORDER BY posts.created DESC
             ";
-            $resultPosts = $mysqli->query($sqlPosts);
+            $lesInformations = $mysqli->query($laQuestionEnSql);
 
-             // Display posts
+
+            // Display posts
             while ($post = $resultPosts->fetch_assoc()) {
                 ?>
                 <article>
@@ -77,7 +83,15 @@
                         <p><?php echo $post['content']; ?></p>
                     </div>
                     <footer>
-                        <small>♥ <?php echo $post['like_number']; ?></small>
+
+                        <form action="like.php" method="post" style="display:inline;">
+                            <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
+                            <button type="submit" class="like-button">
+                                ♥ <?php echo $post['like_number']; ?>
+                            </button>
+                        </form>
+
+
                         <a href="#">#<?php echo str_replace(',', ', #', $post['taglist']); ?></a>
                     </footer>
                 </article>

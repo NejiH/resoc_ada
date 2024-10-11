@@ -8,11 +8,11 @@ session_start();
     <meta charset="utf-8">
     <title>ReSoC - Connexion</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'includes/header.php'; ?>
 
     <div id="wrapper">
 
@@ -24,7 +24,7 @@ session_start();
             <article>
                 <h2>Connexion</h2>
                 <?php
-                include 'connect.php';
+                include 'database/connect.php';
 
                 // Etape 1 : vérifier si on est en train d'afficher ou de traiter le formulaire
                 // si on reçoit un champ email rempli il y a une chance que ce soit un traitement

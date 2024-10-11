@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <title>ReSoC - Administration</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
     <?php
-    include 'connect.php';
-    include 'header.php';
+    include 'database/connect.php';
+    include 'includes/header.php';
     ?>
     <div id="wrapper" class="admin">
         <aside>

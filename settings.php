@@ -5,20 +5,20 @@
     <meta charset="utf-8">
     <title>ReSoC - Paramètres</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-<?php include 'header.php'; ?>
+    <?php include 'includes/header.php'; ?>
     <div id="wrapper" class='profile'>
 
 
         <aside>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
+            <img src="assets/user.jpg" alt="Portrait de l'utilisatrice" />
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez les informations de l'utilisatrice
-                    n° <?php include 'user_id.php'; ?></p>
+                    n° <?php include 'includes/user_id.php'; ?></p>
 
             </section>
         </aside>
@@ -31,12 +31,12 @@
              * Documentation : https://www.php.net/manual/fr/reserved.variables.get.php
              * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
              */
-            include 'user_id.php';
+            include 'includes/user_id.php';
 
             /**
              * Etape 2: se connecter à la base de donnée
              */
-            include 'connect.php';
+            include 'database/connect.php';
 
             /**
              * Etape 3: récupérer le nom de l'utilisateur
@@ -54,7 +54,7 @@
                     GROUP BY users.id
                     ";
 
-            include 'utilitaires.php';       
+            include 'includes/utilisaires.php';
 
             $user = $lesInformations->fetch_assoc();
 
