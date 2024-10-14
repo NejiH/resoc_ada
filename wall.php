@@ -70,7 +70,7 @@
 
 
             // Display posts
-            while ($post = $resultPosts->fetch_assoc()) {
+            while ($post = $lesInformations->fetch_assoc()) {
                 ?>
                 <article>
                     <h3>
