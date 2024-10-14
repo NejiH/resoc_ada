@@ -56,7 +56,7 @@
 
 
                     //Etape 3 : Ouvrir une connexion avec la base de donnée.
-                    $mysqli = new mysqli("localhost", "root", "", "socialnetwork_tests");
+                    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
                     //Etape 4 : Petite sécurité
                     // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
                     $new_email = $mysqli->real_escape_string($new_email);
@@ -74,7 +74,7 @@
                         . ");";
                     // Etape 6: exécution de la requete
                     $ok = $mysqli->query($lInstructionSql);
-                    if (! $ok) {
+                    if (!$ok) {
                         echo "L'inscription a échouée : " . $mysqli->error;
                     } else {
                         echo "Votre inscription est un succès : " . $new_alias;
@@ -85,7 +85,7 @@
                 <!-- formulaire d'inscription -->
                 <form action="registration.php" method="post">
                     <dl>
-                        <dt><label for='pseudo'>Pseudo</label></dt>
+                        <dt><label for='pseudo'>Pseudo</label></dt>;
                         <dd><input type='text' id='pseudo' name='pseudo' aria-describedby='pseudoHelp' required></dd>
                         <dd><small id="pseudoHelp">Votre pseudo doit comporter au moins 3 caractères.</small></dd>
                         <dt><label for='email'>E-Mail</label></dt>
