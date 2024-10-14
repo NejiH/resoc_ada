@@ -52,7 +52,7 @@
                     ?>
                     <article>
                         <img src="user.jpg" alt="Portrait de l'utilisateur" />
-                        <h3><?php echo $abonnement['alias']; ?></h3>
+                        <h3> <a href="wall.php?user_id=<?php echo $abonnement['id']?>"><?php echo $abonnement['alias'];?></h3></a>
                         <p>ID: <?php echo $abonnement['id']; ?></p>
                     </article>
                     <?php

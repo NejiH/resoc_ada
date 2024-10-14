@@ -54,7 +54,7 @@
                     GROUP BY users.id
                     ";
 
-            include 'includes/utilisaires.php';
+            include 'includes/utilitaires.php';
 
             $user = $lesInformations->fetch_assoc();
 

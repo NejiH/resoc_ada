@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>ReSoC - Mur</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css"/>
 
     <link rel="stylesheet">
 </head>
@@ -38,20 +38,6 @@
 
         <main>
 
-            <!-- formulaire en cours -->
-            <form method="POST" action="wall.php">
-                <textarea name="messageWall" placeholder="Message..." required></textarea>
-                <button type="submit">Poste ton message</button>
-            </form>
-
-            <?php
-
-            if (isset($_POST['messageWall'])) {
-                echo $_POST['messageWall'];
-            }
-            // INSERT INTO `posts` (`id`, `user_id`, `content`, `created`, `parent_id`) VALUES ('357', '1', 'Hello world', '2024-10-10 15:24:44.000000', NULL);
-            ?>
-
             <?php
 
             $laQuestionEnSql = "
@@ -68,7 +54,24 @@
             ";
             $lesInformations = $mysqli->query($laQuestionEnSql);
 
+            $newPost = $lesInformations->fetch_assoc()
+            ?>
 
+            <!-- formulaire en cours -->
+            <form method="POST" action="wall.php">
+                <textarea name="messageWall" placeholder="Message..." required></textarea>
+                <button onclick="window.Location.href = 'wall.php?user_id=<?php echo $newPost['id']?>'" type="submit" >Poste ton message</button>
+            </form>
+
+            <?php
+            if (isset($_POST['messageWall'])) {
+                echo $_POST['messageWall'];
+            }
+            // INSERT INTO `posts` (`id`, `user_id`, `content`, `created`, `parent_id`) VALUES ('357', '1', 'Hello world', '2024-10-10 15:24:44.000000', NULL);
+            ?>
+
+
+            <?php
             // Display posts
             while ($post = $lesInformations->fetch_assoc()) {
                 ?>
