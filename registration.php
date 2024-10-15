@@ -38,6 +38,7 @@
             <article>
                 <h2>Inscription</h2>
                 <?php
+                include "database/connect.php";
                 /**
                  * TRAITEMENT DU FORMULAIRE
                  */
@@ -48,15 +49,14 @@
                     // on ne fait ce qui suit que si un formulaire a été soumis.
                     // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
                     // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
-                    echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                    // echo "<pre>" . print_r($_POST, 1) . "</pre>";
                     // et complétez le code ci dessous en remplaçant les ???
-                    $new_email = $_POST['???'];
-                    $new_alias = $_POST['???'];
-                    $new_passwd = $_POST['???'];
+                    $new_email = $_POST['email'];
+                    $new_alias = $_POST['pseudo'];
+                    $new_passwd = $_POST['motdepasse'];
 
 
                     //Etape 3 : Ouvrir une connexion avec la base de donnée.
-                    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
                     //Etape 4 : Petite sécurité
                     // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
                     $new_email = $mysqli->real_escape_string($new_email);
@@ -83,21 +83,22 @@
                 }
                 ?>
                 <!-- formulaire d'inscription -->
-                <form action="registration.php" method="post">
+                <form action="registration.php" method="post" aria-labelledby="registrationForm">
                     <dl>
-                        <dt><label for='pseudo'>Pseudo</label></dt>;
-                        <dd><input type='text' id='pseudo' name='pseudo' aria-describedby='pseudoHelp' required></dd>
+                        <dt><label for='pseudo'>Pseudo</label></dt>
+                        <dd><input type='text' id='pseudo' name='pseudo' aria-describedby='pseudoHelp'
+                                placeholder="Pseudo" minlength=3 required></dd>
                         <dd><small id="pseudoHelp">Votre pseudo doit comporter au moins 3 caractères.</small></dd>
                         <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' id='email' name='email' aria-describedby='emailHelp' required></dd>
+                        <dd><input type="email" id="email" name="email" placeholder="Email" required></dd>
                         <dd><small id='emailHelp'>Entrez une adresse e-mail valide.</small></dd>
                         <dt><label for='motdepasse'>Mot de passe</label></dt>
-                        <dd><input type='password' id='motdepasse' name='motdepasse' aria-describedby='passwordHelp'
-                                required></dd>
+                        <dd><input type='password' placeholder="Mot de Passe" id='motdepasse' name='motdepasse'
+                                aria-describedby='passwordHelp' minlength=8 required></dd>
                         <dd><small id='passwordHelp'>Votre mot de passe doit contenir au moins 8 caractères.</small>
                         </dd>
                     </dl>
-                    <input type='submit'>
+                    <input type='submit' value="Submit" />
                 </form>
             </article>
         </main>
