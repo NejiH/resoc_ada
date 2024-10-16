@@ -10,7 +10,6 @@
 
 <body>
     <?php
-
     include 'includes/header.php';
     include 'database/connect.php';
 

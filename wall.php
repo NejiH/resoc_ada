@@ -36,6 +36,7 @@
             <!-- formulaire Message -->
             <form id="formulaireMessageWall" method="POST" action="wall.php?user_id=<?php echo $userId ?>">
                 <textarea name="postMessage" placeholder="Poster un message..." required></textarea>
+                <!-- Ajouter un menu deroulant (inspiration usurpedpost) pour choisir le ou les tags a appliquer -->
                 <button name="btnPostMessage" value="userMessage" type="submit">Poste ton message</button>
             </form>
 

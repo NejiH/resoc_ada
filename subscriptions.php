@@ -31,7 +31,8 @@
             <?php
             // step 1: get user ID
             // $userId = $_GET['user_id'];
-            
+            $userId = intval($_GET['user_id']);
+
             // check connection 
             if ($mysqli->connect_error) {
                 die("Erreur de connexion: " . $mysqli->connect_error);
