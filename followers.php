@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php
+    include 'database/connect.php';
+    include 'includes/header.php'; ?>
 
     <div id="wrapper">
         <aside>
@@ -23,8 +25,6 @@
         </aside>
         <main class='contacts'>
             <?php
-            include 'database/connect.php';
-
             // step 1: get user ID
             $userId = $_GET['user_id'];
 

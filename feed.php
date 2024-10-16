@@ -12,10 +12,9 @@
 
 <body>
     <?php
-    include 'includes/header.php';
     include 'database/connect.php';
-
-    $userId = intval($_GET['user_id']);
+    include 'includes/header.php';
+    include 'includes/user_id.php';
 
     $sqlUser = "SELECT * FROM `users` WHERE id='$userId'";
     $resultUser = $mysqli->query($sqlUser);

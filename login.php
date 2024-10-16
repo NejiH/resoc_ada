@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!doctype html>
 <html lang="fr">
 
@@ -12,24 +9,10 @@ session_start();
 </head>
 
 <body>
-    <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social" />
-        <nav id="menu">
-            <a href="news.php">Actualités</a>
-            <a href="wall.php?user_id=5">Mur</a>
-            <a href="feed.php?user_id=5">Flux</a>
-            <a href="tags.php?tag_id=1">Mots-clés</a>
-        </nav>
-        <nav id="user">
-            <a href="#">Profil</a>
-            <ul>
-                <li><a href="settings.php?user_id=5">Paramètres</a></li>
-                <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
-                <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
-            </ul>
-
-        </nav>
-    </header>
+    <?php
+    include "database/connect.php";
+    include "includes/header.php";
+    ?>
 
     <div id="wrapper">
 
@@ -51,14 +34,11 @@ session_start();
                     // on ne fait ce qui suit que si un formulaire a été soumis.
                     // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
                     // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
-                    echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                    // echo "<pre>" . print_r($_POST, return: 1) . "</pre>";
                     // et complétez le code ci dessous en remplaçant les ???
-                    $emailAVerifier = $_POST['???'];
-                    $passwdAVerifier = $_POST['???'];
+                    $emailAVerifier = $_POST['email'];
+                    $passwdAVerifier = $_POST['motpasse'];
 
-
-                    //Etape 3 : Ouvrir une connexion avec la base de donnée.
-                    $mysqli = new mysqli("localhost", "root", "", "socialnetwork_tests");
                     //Etape 4 : Petite sécurité
                     // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
                     $emailAVerifier = $mysqli->real_escape_string($emailAVerifier);
@@ -87,18 +67,17 @@ session_start();
                 }
                 ?>
                 <form action="login.php" method="post">
-                    <input type='hidden' name='???' value='achanger'>
                     <dl>
                         <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' name='email'></dd>
+                        <dd><input type='email' id="email" placeholder="Email" name='email'></dd>
                         <dt><label for='motpasse'>Mot de passe</label></dt>
-                        <dd><input type='password' name='motpasse'></dd>
+                        <dd><input type='password' id="motpasse" placeholder="Mot de passe" name='motpasse'></dd>
                     </dl>
-                    <input type='submit'>
-                </form>
+                    <input type='submit' value="Submit">
+                </form><br>
                 <p>
-                    Pas de compte?
-                    <a href='registration.php'>Inscrivez-vous.</a>
+                    Pas de compte ?
+                    <u><a href='registration.php'>Inscrivez-vous.</a></u>
                 </p>
 
             </article>

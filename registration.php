@@ -9,24 +9,10 @@
 </head>
 
 <body>
-    <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social" />
-        <nav id="menu">
-            <a href="news.php">Actualités</a>
-            <a href="wall.php?user_id=5">Mur</a>
-            <a href="feed.php?user_id=5">Flux</a>
-            <a href="tags.php?tag_id=1">Mots-clés</a>
-        </nav>
-        <nav id="user">
-            <a href="#">Profil</a>
-            <ul>
-                <li><a href="settings.php?user_id=5">Paramètres</a></li>
-                <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
-                <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
-            </ul>
-
-        </nav>
-    </header>
+    <?php
+    include 'database/connect.php';
+    include 'includes/header.php';
+    ?>
 
     <div id="wrapper">
 
@@ -38,7 +24,6 @@
             <article>
                 <h2>Inscription</h2>
                 <?php
-                include "database/connect.php";
                 /**
                  * TRAITEMENT DU FORMULAIRE
                  */
@@ -98,6 +83,21 @@
                         <dd><small id='passwordHelp'>Votre mot de passe doit contenir au moins 8 caractères.</small>
                         </dd>
                     </dl>
+                    <p>
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">J'autorise l'utilisation de mes données conformément aux <u><a
+                                    href="RGPD/politique-confidentialite.html" target="_blank">termes de la politique de
+                                    confidentialité</a></u>.
+
+                        </label>
+                    </p>
+                    <br>
+                    <p>
+                        Vous pouvez à tout moment consulter, modifier ou supprimer vos données
+                        personnelles.<br>Consultez
+                        notre <u><a href="RGPD/droits-utilisateurs.html" target="_blank">politique de protection des
+                                données pour plus de détails</a></u>.
+                    </p><br>
                     <input type='submit' value="Submit" />
                 </form>
             </article>

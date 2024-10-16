@@ -9,7 +9,11 @@
 </head>
 
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php
+    include 'database/connect.php';
+    include 'includes/header.php';
+    include 'includes/user_id.php';
+    ?>
 
     <div id="wrapper">
         <aside>
@@ -25,11 +29,9 @@
 
         <main class='contacts'>
             <?php
-            include 'database/connect.php';
-
             // step 1: get user ID
-            $userId = $_GET['user_id'];
-
+            // $userId = $_GET['user_id'];
+            
             // check connection 
             if ($mysqli->connect_error) {
                 die("Erreur de connexion: " . $mysqli->connect_error);

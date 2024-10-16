@@ -9,7 +9,11 @@
 </head>
 
 <body>
-    <?php include 'includes/header.php'; ?>
+    <?php
+    include 'database/connect.php';
+    include 'includes/header.php';
+    include 'includes/user_id.php';
+    ?>
     <div id="wrapper" class='profile'>
 
 
@@ -18,7 +22,7 @@
             <section>
                 <h3>Présentation</h3>
                 <p>Sur cette page vous trouverez les informations de l'utilisatrice
-                    n° <?php include 'includes/user_id.php'; ?></p>
+                    n° <?php $userId ?></p>
 
             </section>
         </aside>
@@ -31,12 +35,11 @@
              * Documentation : https://www.php.net/manual/fr/reserved.variables.get.php
              * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
              */
-            include 'includes/user_id.php';
-
+            // include 'includes/user_id.php';
+            
             /**
              * Etape 2: se connecter à la base de donnée
              */
-            include 'database/connect.php';
 
             /**
              * Etape 3: récupérer le nom de l'utilisateur
